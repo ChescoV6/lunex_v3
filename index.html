@@ -17,7 +17,7 @@
             margin: 0;
             padding: 0;
             width: 550px;
-            height: 279px;
+            height: 300px; /* Increased height slightly to better fill vertically */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -26,7 +26,6 @@
             color: var(--accent);
             overflow: hidden;
             position: relative;
-            cursor: none; /* Hide default cursor for immersive feel */
         }
         canvas {
             position: absolute;
@@ -62,7 +61,7 @@
                 0 0 15px var(--text-glow),
                 0 0 25px var(--accent-glow);
             letter-spacing: 3px;
-            padding: 28px 48px;
+            padding: 32px 48px; /* Slightly more padding to fill the extra height */
             border-radius: 20px;
             background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
             backdrop-filter: blur(20px) saturate(200%);
@@ -125,18 +124,6 @@
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom cursor via particles, but fallback */
-        .cursor {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent);
-            pointer-events: none;
-            z-index: 4;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
     </style>
 </head>
 <body>
@@ -146,14 +133,13 @@
     <canvas id="particles"></canvas>
     <div class="welcome">
         LUNEX
-        <span class="subtitle">Roblox Executor v3</span>
+        <span class="subtitle">V3</span>
     </div>
-    <div class="cursor" id="cursor"></div>
     <script>
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d', { alpha: true });
         canvas.width = 550;
-        canvas.height = 279;
+        canvas.height = 300; /* Match increased height */
 
         let particles = [];
         const numParticles = 80; // More for density, but performant
@@ -236,12 +222,10 @@
             particles.push(new Particle());
         }
 
-        // Mouse interaction
+        // Mouse interaction (removed custom cursor)
         canvas.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-            document.getElementById('cursor').style.left = (e.clientX - 10) + 'px';
-            document.getElementById('cursor').style.top = (e.clientY - 10) + 'px';
         });
 
         // Touch for mobile/WebView fallback
