@@ -35,6 +35,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            pointer-events: none; /* Lets clicks pass through to buttons */
         }
         /* Sidebar - Compact for 550px width */
         .sidebar {
@@ -141,7 +142,7 @@
             border: 1px solid var(--accent-glow);
             z-index: 1;
             animation: float 6s ease-in-out infinite;
-            pointer-events: none;
+            pointer-events: none; /* Ignore clicks on panels */
         }
         .panel:nth-child(1) { width: 40px; height: 40px; top: 10%; left: 5%; animation-delay: 0s; } /* Scaled down */
         .panel:nth-child(2) { width: 30px; height: 30px; top: 50%; right: 10%; animation-delay: 2s; }
@@ -291,14 +292,14 @@
             particles.push(new Particle());
         }
 
-        // Mouse interaction
-        canvas.addEventListener('mousemove', (e) => {
+        // Mouse interaction - Moved to document for global capture
+        document.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         });
 
-        // Touch
-        canvas.addEventListener('touchmove', (e) => {
+        // Touch - On document
+        document.addEventListener('touchmove', (e) => {
             e.preventDefault();
             const touch = e.touches[0];
             mouse.x = touch.clientX;
