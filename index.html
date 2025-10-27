@@ -34,7 +34,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            pointer-events: none; /* Key fix: Lets clicks pass through to button */
+            pointer-events: none; /* Lets clicks pass through to button */
         }
         /* Decorative rounded panels */
         .panel {
@@ -163,7 +163,6 @@
         LUNEX
         <span class="subtitle">V3</span>
     </div>
-    <button class="enter-btn" onclick="window.location.href='main.html'">ENTER LUNEX</button>
     <script>
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d', { alpha: true });
