@@ -100,6 +100,32 @@
             opacity: 0.9;
             animation: fadeIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both; /* Smoother, faster */
         }
+        /* New: Enter button */
+        .enter-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: linear-gradient(145deg, var(--accent), var(--bg-primary));
+            border: 1px solid var(--accent-glow);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px var(--text-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .enter-btn:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            background: linear-gradient(145deg, var(--bg-primary), var(--accent));
+        }
         @keyframes glitchIn {
             0% {
                 opacity: 0;
@@ -135,6 +161,7 @@
         LUNEX
         <span class="subtitle">V3</span>
     </div>
+    <button class="enter-btn" onclick="window.location.href='main.html'">ENTER LUNEX</button>
     <script>
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d', { alpha: true });
